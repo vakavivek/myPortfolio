@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Vaka | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --beige: #f5f5dc;
+            --light-blue: #4a89dc;
+            --orange: #ff7f50;
+            --dark-blue: #2c3e50;
+            --white: #ffffff;
+            --gray: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--beige);
+            color: var(--dark-blue);
+            line-height: 1.6;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--light-blue);
+            color: var(--white);
+        }
+        
+        section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* Home Section */
+        #home {
+            background-color: var(--beige);
+        }
+        
+        .home-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .home-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+        
+        .home-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+        
+        .home-text h1 span {
+            color: var(--orange);
+        }
+        
+        .home-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--dark-blue);
+        }
+        
+        .home-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .home-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        #contact {
+            background-color: var(--white);
+        }
+        
+        .contact-content {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .contact-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark-blue);
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-blue);
+            background-color: var(--gray);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--light-blue);
+            color: var(--white);
+        }
+        
+        .contact-link i {
+            font-size: 1.5rem;
+            margin-right: 0.8rem;
+        }
+        
+        .education-timeline {
+            margin-top: 3rem;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .education-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: var(--light-blue);
+        }
+        
+        .education-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--orange);
+        }
+        
+        .education-item p {
+            font-size: 1rem;
+            color: var(--dark-blue);
+        }
+        
+        .education-item .year {
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--light-blue);
+        }
+        
+        /* Skills Section */
+        #skills {
+            background-color: var(--beige);
+        }
+        
+        .skills-content {
+            width: 100%;
+        }
+        
+        .skills-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--dark-blue);
+        }
+        
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .skills-category {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skills-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--orange);
+            text-align: center;
+        }
+        
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: var(--gray);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--light-blue);
+            border-radius: 5px;
+        }
+        <style>
+        /* Previous CSS remains the same until projects section */
+
+        /* Updated Projects Section */
+        #projects {
+            background-color: var(--white);
+        }
+
+        .projects-content {
+            width: 100%;
+        }
+
+        .projects-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--dark-blue);
+            position: relative;
+        }
+
+        .projects-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--light-blue), var(--orange));
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 137, 220, 0.2);
+        }
+
+        .project-image {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            color: var(--light-blue);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-blue);
+        }
+
+        .project-info p {
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .demo-link {
+            background-color: var(--light-blue);
+            color: white;
+        }
+
+        .demo-link:hover {
+            background-color: #3a76d2;
+            transform: translateY(-2px);
+        }
+
+        .code-link {
+            background-color: var(--beige);
+            color: var(--dark-blue);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .code-link:hover {
+            background-color: #e8e8d8;
+            transform: translateY(-2px);
+        }
+
+        .project-link i {
+            margin-right: 0.5rem;
+        }
+
+        /* Project-specific icons */
+        .stopwatch .project-icon {
+            color: #e74c3c;
+        }
+
+        .calendar .project-icon {
+            color: #3498db;
+        }
+
+        .age-calculator .project-icon {
+            color: #9b59b6;
+        }
+
+        .weight-converter .project-icon {
+            color: #2ecc71;
+        }
+
+        .rock-paper-scissors .project-icon {
+            color: #e67e22;
+        }
+
+        .calculator .project-icon {
+            color: #1abc9c;
+        }
+
+        .bmi-calculator .project-icon {
+            color: #f1c40f;
+        }
+
+        @media (max-width: 768px) {
+            .project-links {
+                flex-direction: column;
+            }
+ 
+        @media (max-width: 768px) {
+            .home-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .home-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <div class="container">
+            <div class="home-content">
+                <div class="home-text">
+                    <h1>Hello, I'm <span>Vivek Vaka</span></h1>
+                    <p>I'm a Computer Science student passionate about web development and coding. I love building innovative projects that solve real-world problems and create engaging user experiences. With a strong foundation in programming and a continuous desire to learn, I'm always exploring new technologies to enhance my skills.</p>
+                </div>
+                <div class="home-image">
+                    <img src="https://img.freepik.com/free-vector/web-development-programmer-engineering-coding-website-augmented-reality-interface-screens-developer-project-engineer-programming-software-application-design-cartoon-illustration_107791-3863.jpg" alt="Developer Illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Contact Me</h2>
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/yourprofile" class="contact-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:vivekvaka@example.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://leetcode.com/yourprofile" class="contact-link" target="_blank">
+                        <i class="fas fa-code"></i>
+                        <span>LeetCode</span>
+                    </a>
+                </div>
+                
+                <div class="education-timeline">
+                    <h2>Education</h2>
+                    <div class="education-item">
+                        <div class="year"></div>
+                        <h3>VIT Chennai</h3>
+                        <p>Bachelor of Technology in Computer Science</p>
+                        <p>2023 - 2027</p>
+                    </div>
+                    <div class="education-item">
+                        <div class="year"></div>
+                        <h3>FIITJEE</h3>
+                        <p>Intermediate Education</p>
+                        <p>2020 - 2022</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="container">
+            <div class="skills-content">
+                <h2>My Skills</h2>
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">Python</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">C</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">C++</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Java</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3>Web Development</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">HTML/CSS</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">JavaScript</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">ReactJS</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="container">
+            <div class="projects-content">
+                <h2>My Projects</h2>
+                <div class="projects-grid">
+                    <!-- Stopwatch Project -->
+                    <div class="project-card stopwatch">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Stopwatch Project">
+                            <div class="project-icon">
+                                <i class="fas fa-stopwatch"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Stopwatch</h3>
+                            <p>A digital stopwatch with start, pause, and reset functionality built with JavaScript.</p>
+                            <div class="project-links">
+                                <a href="https://vakavivek.github.io/project-1-stopwatch/" class="project-link demo-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mini Calendar Project -->
+                    <div class="project-card calendar">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1517263904808-5dc91e3e7044?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mini Calendar Project">
+                            <div class="project-icon">
+                                <i class="far fa-calendar-alt"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Mini Calendar</h3>
+                            <p>An interactive calendar application that displays dates and allows navigation between months.</p>
+                            <div class="project-links">
+                                <a href="https://vakavivek.github.io/project-2-mini-calender-/" class="project-link demo-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Age Calculator Project -->
+                    <div class="project-card age-calculator">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1506784926709-22f1ec395907?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Age Calculator Project">
+                            <div class="project-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Age Calculator</h3>
+                            <p>Calculates exact age in years, months, and days from birth date input.</p>
+                            <div class="project-links">
+                                <a href="https://vakavivek.github.io/project-3-Age-calculator-/" class="project-link demo-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Weight Converter Project -->
+                    <div class="project-card weight-converter">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1518459031867-a89b944bffe4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Weight Converter Project">
+                            <div class="project-icon">
+                                <i class="fas fa-weight"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Weight Converter</h3>
+                            <p>Converts between kilograms, pounds, ounces, and grams in real-time.</p>
+                            <div class="project-links">
+                                <a href="https://vakavivek.github.io/project-4-weight-converter-/" class="project-link demo-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rock Paper Scissors Project -->
+                    <div class="project-card rock-paper-scissors">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1589487001730-718cb7307a6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Rock Paper Scissors Project">
+                            <div class="project-icon">
+                                <i class="fas fa-hand-rock"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Rock Paper Scissors</h3>
+                            <p>A fun interactive game against the computer with score tracking.</p>
+                            <div class="project-links">
+                                <a href="https://vakavivek.github.io/project-5-rock-paper-scissor-/" class="project-link demo-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Calculator Project -->
+                    <div class="project-card calculator">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Calculator Project">
+                            <div class="project-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Calculator</h3>
+                            <p>A fully functional calculator with basic arithmetic operations.</p>
+                            <div class="project-links">
+                                <a href="https://vakavivek.github.io/project-6-calculator-/" class="project-link demo-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- BMI Calculator Project -->
+                    <div class="project-card bmi-calculator">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="BMI Calculator Project">
+                            <div class="project-icon">
+                                <i class="fas fa-weight"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>BMI Calculator</h3>
+                            <p>Calculates Body Mass Index with category classification.</p>
+                            <div class="project-links">
+                                <a href="https://vakavivek.github.io/project-7-bmi-/" class="project-link demo-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add animation to skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        };
+        
+        // Intersection Observer to trigger animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'skills') {
+                        animateSkillBars();
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        // Observe each section
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
